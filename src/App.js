@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import './App.css';
 
 function App(){
   return(
-    <div>
-      <Header/>
+    <div className="App-header">
+      <Header />
       <main>
         <p> Componente do semestre 2024/2</p>
         {ListaDeDisciplinas()}
@@ -42,22 +43,33 @@ function ListaDeDisciplinas() {
   };
 
   return (
-    <div>
+    <><div>
       <h1>Lista de disciplinas</h1>
       <input
         type="text"
         value={novaDisciplina}
         onChange={handleChange}
-        onKeyPress={handleKeyPress}  // Adiciona a função de capturar Enter
-        placeholder="Nova disciplina"
-      />
+        onKeyPress={handleKeyPress} // Adiciona a função de capturar Enter
+        placeholder="Nova disciplina" />
       <button onClick={adicionarDisciplina}>Adicionar</button>
       <ul>
         {lista.map((tarefa, index) => (
-          <li key={index}>{tarefa}</li>  // Renderiza cada tarefa como um item de lista
+          <li key={index}>{tarefa}</li> // Renderiza cada tarefa como um item de lista
         ))}
-      </ul>     
+      </ul>
     </div>
+    <div>
+        <p>Selecione o turno:</p>
+        <label>
+          <input type="radio" name="options" value="M" checked /> Matutino
+        </label>
+        <label>
+          <input type="radio" name="options" value="M" checked /> Vespertino
+        </label>
+        <label>
+          <input type="radio" name="options" value="M" checked /> Noturno
+        </label>
+      </div></>
   );
 }
 export default App;

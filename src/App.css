@@ -1,7 +1,11 @@
-#Div1
-{
-text-align: center;
+.App {
+    text-align: center;
 }
-#Div1 h1 {
-color: rgb(84, 84, 129);
+.App-header{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+    color: #000000;
 }
