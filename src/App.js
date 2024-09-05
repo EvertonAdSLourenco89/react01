@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import './App.css';
-import { saveAs } from 'file-saver'; // Importação da biblioteca file-saver
+import { saveAs } from 'file-saver'; // Importação correta do file-saver
 
 function App() {
   return (
@@ -18,23 +18,19 @@ function App() {
 }
 
 function ListaDeDisciplinas() {
-  // Estados para disciplinas, turno e observações
   const [lista, setLista] = useState(['PW4', 'TC2', 'PDM']);
   const [novaDisciplina, setNovaDisciplina] = useState('');
-  const [turno, setTurno] = useState('Matutino'); // Estado para armazenar o turno
-  const [observacoes, setObservacoes] = useState(''); // Estado para observações
+  const [turno, setTurno] = useState('Matutino');
+  const [observacoes, setObservacoes] = useState('');
 
-  // Função para lidar com a mudança de valor do input
   const handleChange = (event) => {
     setNovaDisciplina(event.target.value);
   };
 
-  // Função para lidar com a mudança no textarea
   const handleObservacoesChange = (event) => {
     setObservacoes(event.target.value);
   };
 
-  // Função para adicionar uma nova disciplina à lista
   const adicionarDisciplina = () => {
     if (novaDisciplina.trim() !== '') {
       setLista([...lista, novaDisciplina]);
@@ -42,19 +38,16 @@ function ListaDeDisciplinas() {
     }
   };
 
-  // Função para capturar a tecla Enter e adicionar a lista de disciplinas
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       adicionarDisciplina();
     }
   };
 
-  // Função para lidar com a seleção de turno
   const handleTurnoChange = (event) => {
     setTurno(event.target.value);
   };
 
-  // Função para salvar as informações em um arquivo de texto
   const salvarAgenda = () => {
     const conteudo = `
       Disciplinas: ${lista.join(', ')}
@@ -63,7 +56,7 @@ function ListaDeDisciplinas() {
     `;
 
     const blob = new Blob([conteudo], { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, 'agenda-professor.txt'); // Salva o arquivo usando file-saver
+    saveAs(blob, 'agenda-professor.txt'); // Salva o arquivo
   };
 
   return (
